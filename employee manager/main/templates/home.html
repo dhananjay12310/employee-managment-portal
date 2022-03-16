@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+EMP
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center container">
+    <br><br><br><br><br><br><br>
+
+    <div class="checkbox mb-3">
+        <h6></h6>
+        <a class="btn btn-lg btn-primary" href="{{ url_for('employee_login_page') }}">EMPLOYEE&nbsp; LOGIN</a>
+
+    </div>
+
+    <div class="checkbox mb-3">
+        <h6></h6>
+        <a class="btn btn-lg btn-primary" href="{{ url_for('admin_login_page') }}"> &nbsp;ADMINISTRATOR&nbsp;</a>
+
+    </div>
+
+</div>
+
+{% endblock %}

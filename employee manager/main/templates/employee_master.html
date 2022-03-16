@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}
+employee_master
+{% endblock %}
+
+{% block navigation %}
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          <a class="nav-link" href="{{ url_for('empRegister_page') }}">Register-Employee <span class="sr-only">(current)</span></a>
+      </li>
+<!--      <li class="nav-item">-->
+<!--          <a class="nav-link" href="#">Market</a>-->
+<!--      </li>-->
+</ul>
+    {% if current_user.is_authenticated %}
+          <ul class="navbar-nav">
+          <li class="nav-item">
+              <a class="nav-link">Welcome!  {{ current_user.first_name }}</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('logout_page') }}">Logout</a>
+          </li>
+      </ul>
+
+    {% endif %}
+
+</div>
+{% endblock %}
+
+{% block content %}
+<br>
+<div align="center">
+<form method="GET" class='row justify-content-center align-items-center form-inline my-2 my-lg-0' >
+    <input class='form-control mr-sm-2' type="search" placeholder="search" aria-label='search' name="q">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<br>
+
+
+<table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col"><b><i>ID</i></b></th>
+                <th scope="col"><b><i>FIRST_NAME</i></b></th>
+                <th scope="col"><b><i>LAST_NAME</i></b></th>
+                <th scope="col"><b><i>EMAIL</i></b></th>
+                <th scope="col"><b><i>ADMIN</i></b></th>
+<!--                <th scope="col">details</th>-->
+
+<!--                <th scope="col">password</th>-->
+<!--                <th scope="col">phone</th>-->
+<!--                <th scope="col">dob</th>-->
+<!--                <th scope="col">address</th>-->
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for emp in emp_info %}
+
+                <tr>
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.first_name}}</td>
+                    <td>{{emp.last_name}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.admin}}</td>
+<!--                    <td>-->
+<!--                        <button class="btn btn-outline btn-info">More_info</button>-->
+<!--                    </td>-->
+
+<!--                    <td>{{emp.password_hash}}</td>-->
+<!--                    <td>{{emp.phone}}</td>-->
+<!--                    <td>{{emp.dob}}</td>-->
+<!--                    <td>{{emp.address}}</td>-->
+
+                </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
+
